@@ -43,11 +43,11 @@ export class AppComponent implements OnDestroy {
      * After that the subscription will only emit new value if someone publishes into the fooBar topic.
      * */
     subscribe(): void {
-        this._mqttService.subscribeTo<Foo>('fooBar')
+        this._mqttService.subscribeTo<Foo>('moph')
             .subscribe({
                 next: (msg: SubscriptionGrant | Foo) => {
                     if (msg instanceof SubscriptionGrant) {
-                        this.status.push('Subscribed to fooBar topic!');
+                        this.status.push('Subscribed to moph topic!');
                     } else {
                         this.messages.push(msg);
                     }
@@ -63,9 +63,9 @@ export class AppComponent implements OnDestroy {
      * Sends message to fooBar topic.
      */
     sendMsg(): void {
-        this._mqttService.publishTo<Foo>('fooBar', {bar: 'foo'}).subscribe({
+        this._mqttService.publishTo<Foo>('moph', {bar: 'foo'}).subscribe({
             next: () => {
-                this.status.push('Message sent to fooBar topic');
+                this.status.push('Message sent to moph topic');
             },
             error: (error: Error) => {
                 this.status.push(`Something went wrong: ${error.message}`);
@@ -77,9 +77,9 @@ export class AppComponent implements OnDestroy {
      * Unsubscribe from fooBar topic.
      */
     unsubscribe(): void {
-        this._mqttService.unsubscribeFrom('fooBar').subscribe({
+        this._mqttService.unsubscribeFrom('moph').subscribe({
             next: () => {
-                this.status.push('Unsubscribe from fooBar topic');
+                this.status.push('Unsubscribe from moph topic');
             },
             error: (error: Error) => {
                 this.status.push(`Something went wrong: ${error.message}`);

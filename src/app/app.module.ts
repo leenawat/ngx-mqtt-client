@@ -17,10 +17,10 @@ import {FlexLayoutModule} from '@angular/flex-layout';
         FlexLayoutModule,
         MatButtonModule,
         NgxMqttClientModule.withOptions({
-            host: 'broker.hivemq.com',
+            host: 'localhost',
             protocol: 'ws',
-            port: 8000,
-            path: '/mqtt',
+            port: 1884,
+            path: '/moph',
             keepalive: 5
         })
     ],
